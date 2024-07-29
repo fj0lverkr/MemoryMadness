@@ -29,3 +29,6 @@ func _load_item_images() -> void:
 			_add_file_to_list(fn, glitch_path)
 	
 	print("Loaded %s images to memory." % _item_images.size())
+
+func get_random_image() -> Dictionary:
+	return _item_images.pick_random()
