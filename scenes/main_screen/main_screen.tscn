@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://df28w3p6sq8xq"]
+[gd_scene load_steps=5 format=3 uid="uid://df28w3p6sq8xq"]
 
 [ext_resource type="FontFile" uid="uid://uatgtpb0skgo" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="1_j7p6f"]
 [ext_resource type="PackedScene" uid="uid://dyv3cl2rncwtj" path="res://scenes/front_sprite/front_sprite.tscn" id="2_jvvso"]
+[ext_resource type="PackedScene" uid="uid://cmpdsasddu7gq" path="res://scenes/level_button/level_button.tscn" id="2_p0ysk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wywq2"]
 font = ExtResource("1_j7p6f")
@@ -53,6 +54,25 @@ size_flags_vertical = 3
 [node name="HBLevels" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="LevelButton" parent="VBoxContainer/HBLevels" instance=ExtResource("2_p0ysk")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="VBoxContainer/HBLevels" instance=ExtResource("2_p0ysk")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="VBoxContainer/HBLevels" instance=ExtResource("2_p0ysk")]
+layout_mode = 2
+
+[node name="LevelButton4" parent="VBoxContainer/HBLevels" instance=ExtResource("2_p0ysk")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="VBoxContainer/HBLevels" instance=ExtResource("2_p0ysk")]
+layout_mode = 2
+
+[node name="LevelButton6" parent="VBoxContainer/HBLevels" instance=ExtResource("2_p0ysk")]
+layout_mode = 2
 
 [node name="Spacer3" type="Control" parent="VBoxContainer"]
 layout_mode = 2
