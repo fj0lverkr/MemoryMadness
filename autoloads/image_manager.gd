@@ -1,5 +1,12 @@
 extends Node
 
+const FRAMES: Array[CompressedTexture2D] = [
+	preload("res://assets/frames/blue_frame.png"),
+	preload("res://assets/frames/green_frame.png"),
+	preload("res://assets/frames/yellow_frame.png"),
+	preload("res://assets/frames/red_frame.png")
+]
+
 var _item_images: Array[Dictionary]
 
 # Called when the node enters the scene tree for the first time.
@@ -27,8 +34,15 @@ func _load_item_images() -> void:
 	for fn: String in file_names:
 		if fn.get_extension() != "import":
 			_add_file_to_list(fn, glitch_path)
-	
-	print("Loaded %s images to memory." % _item_images.size())
 
 func get_random_image() -> Dictionary:
 	return _item_images.pick_random()
+
+func get_image(index: int) -> Dictionary:
+	return _item_images[index]
+
+func get_random_frame() -> CompressedTexture2D:
+	return FRAMES.pick_random()
+
+func shuffle_images() -> void:
+	_item_images.shuffle()

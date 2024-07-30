@@ -17,7 +17,6 @@ func _on_game_exit_pressed() -> void:
 	_show_game_screen(false)
 	AudioManager.play_sound(audio, AudioManager.SOUND_MAIN_MENU)
 
-func _on_level_selected(level: int) -> void:
-	GameManager.current_level = level
+func _on_level_selected(_level: int) -> void:
 	_show_game_screen(true)
 	AudioManager.play_sound(audio, AudioManager.SOUND_IN_GAME)
