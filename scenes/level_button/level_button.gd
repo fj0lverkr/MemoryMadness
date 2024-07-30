@@ -17,3 +17,4 @@ func set_level_number(level_num: int) -> void:
 
 func _on_pressed() -> void:
 	AudioManager.play_button_clicked(button_audio_player)
+	SignalBus.on_level_selected.emit(_level_number)
