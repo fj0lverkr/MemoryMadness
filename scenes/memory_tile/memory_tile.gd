@@ -1,10 +1,12 @@
 extends TextureButton
 
+class_name MemoryTile
+
 @onready var frame_image: TextureRect = $FrameImage
 @onready var item_image: TextureRect = $ItemImage
 
 var _item_name: String
-var can_select_me: bool = true
+var _can_select_me: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,10 +14,10 @@ func _ready() -> void:
 	SignalBus.on_select_enabled.connect(_on_select_enabled)
 
 func _on_select_disabled() -> void:
-	can_select_me = false
+	_can_select_me = false
 
 func _on_select_enabled() -> void:
-	can_select_me = true
+	_can_select_me = true
 
 func get_item_name() -> String:
 	return _item_name
@@ -31,4 +33,5 @@ func setup(ii_dict: Dictionary, fi: CompressedTexture2D) -> void:
 	_item_name = ii_dict.item_name
 
 func _on_pressed() -> void:
-	toggle_reveal(true)
+	if _can_select_me:
+		SignalBus.on_tile_selected.emit(self)

@@ -4,6 +4,7 @@ extends Control
 
 @onready var audio: AudioStreamPlayer = $Sound
 @onready var tiles_grid: GridContainer = $"HB/MCLeft/TilesGrid"
+@onready var scorer: Scorer = $Scorer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,3 +31,4 @@ func _on_level_selected(level: int) -> void:
 	tiles_grid.columns = level_selection.cols
 	for item_info: Dictionary in level_selection.images:
 		_add_tile(item_info, frame)
+	scorer.clear_game(level_selection.pairs)
