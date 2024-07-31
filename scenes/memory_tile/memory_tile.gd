@@ -18,6 +18,6 @@ func get_item_name() -> String:
 	return _item_name
 
 func setup(ii_dict: Dictionary, fi: CompressedTexture2D) -> void:
-	fi.texture = fi
+	frame_image.texture = fi
 	item_image.texture = ii_dict.item_texture
 	_item_name = ii_dict.item_name
