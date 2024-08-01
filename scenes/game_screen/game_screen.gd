@@ -6,6 +6,7 @@ extends Control
 @onready var tiles_grid: GridContainer = $"HB/MCLeft/TilesGrid"
 @onready var moves_label: Label = $"HB/MCRight/VB/HB/MovesLabel"
 @onready var pairs_label: Label = $"HB/MCRight/VB/HB2/PairsLabel"
+@onready var mc_right: MarginContainer = $"HB/MCRight"
 @onready var scorer: Scorer = $Scorer
 
 var _total_pairs: int = 0
@@ -15,6 +16,7 @@ func _ready() -> void:
 	SignalBus.on_level_selected.connect(_on_level_selected)
 	SignalBus.on_move_made.connect(_update_moves_label)
 	SignalBus.on_pair_made.connect(_update_pairs_label)
+	SignalBus.on_game_over.connect(_on_game_over)
 
 func _update_pairs_label(count: int) -> void:
 	pairs_label.text = "%s/%s" % [str(count), str(_total_pairs)]
@@ -46,3 +48,7 @@ func _on_level_selected(level: int) -> void:
 	scorer.clear_game(level_selection.pairs)
 	_update_moves_label(0)
 	_update_pairs_label(0)
+	mc_right.show()
+
+func _on_game_over(_m: int) -> void:
+	mc_right.hide()

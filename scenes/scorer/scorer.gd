@@ -23,6 +23,10 @@ func _hide_selections() -> void:
 	for s: MemoryTile in _selected_tiles:
 		s.toggle_reveal(false)
 
+func _do_game_over() -> void:
+	AudioManager.play_sound(sound, AudioManager.SOUND_GAME_OVER)
+	SignalBus.on_game_over.emit(_moves)
+
 func _remove_tiles() -> void:
 	for t in _selected_tiles:
 		t.remove_on_success()
@@ -64,6 +68,9 @@ func _on_reveal_timer_timeout() -> void:
 		
 	_selected_tiles.clear()
 	SignalBus.on_select_enabled.emit()
+	
+	if _pairs_made == _target_pairs:
+		_do_game_over()
 
 func _on_game_exit_pressed() -> void:
 	reveal_timer.stop()
