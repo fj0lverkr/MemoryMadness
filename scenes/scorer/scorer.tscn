@@ -11,4 +11,4 @@ script = ExtResource("1_adyyt")
 wait_time = 1.2
 one_shot = true
 
-[connection signal="timeout" from="RevealTimer" to="." method="_hide_selections"]
+[connection signal="timeout" from="RevealTimer" to="." method="_on_reveal_timer_timeout"]
