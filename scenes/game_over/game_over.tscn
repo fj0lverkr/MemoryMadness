@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfrqo1a5bgvan"]
+
+[ext_resource type="Script" path="res://scenes/game_over/game_over.gd" id="1_cmhn3"]
+[ext_resource type="Texture2D" uid="uid://7dx8inean8cy" path="res://assets/ui/UIbg.png" id="1_sj636"]
+[ext_resource type="LabelSettings" uid="uid://da2vu1lxvn1k6" path="res://label_settings/LG_84_off_white.tres" id="2_r6mmm"]
+[ext_resource type="LabelSettings" uid="uid://dnryqtw8njv2e" path="res://label_settings/GM_32_grey.tres" id="3_y0p7i"]
+[ext_resource type="Texture2D" uid="uid://cqvkln6jjsr21" path="res://assets/ui/blue_button00.png" id="4_vl8fl"]
+[ext_resource type="Texture2D" uid="uid://b0hspvcvl2fng" path="res://assets/ui/yellow_button00.png" id="5_anllf"]
+[ext_resource type="Texture2D" uid="uid://bhd7yu3ygn1sh" path="res://assets/ui/green_button00.png" id="6_smji5"]
+[ext_resource type="LabelSettings" uid="uid://bqipv71xpgcof" path="res://label_settings/GM_32_white.tres" id="7_yatwo"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cmhn3")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -192.0
+offset_right = 256.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sj636")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MC" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VB" type="VBoxContainer" parent="NinePatchRect/MC"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="NinePatchRect/MC/VB"]
+layout_mode = 2
+text = "YOU WIN!"
+label_settings = ExtResource("2_r6mmm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HB" type="HBoxContainer" parent="NinePatchRect/MC/VB"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MC/VB/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Moves taken: "
+label_settings = ExtResource("3_y0p7i")
+vertical_alignment = 1
+
+[node name="MovesLabel" type="Label" parent="NinePatchRect/MC/VB/HB"]
+layout_mode = 2
+text = "0000"
+label_settings = ExtResource("3_y0p7i")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="NinePatchRect/MC/VB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ExitButton" type="TextureButton" parent="NinePatchRect/MC/VB"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_vl8fl")
+texture_pressed = ExtResource("5_anllf")
+texture_hover = ExtResource("6_smji5")
+
+[node name="Label" type="Label" parent="NinePatchRect/MC/VB/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+label_settings = ExtResource("7_yatwo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="NinePatchRect/MC/VB/ExitButton" to="." method="_on_exit_button_pressed"]
