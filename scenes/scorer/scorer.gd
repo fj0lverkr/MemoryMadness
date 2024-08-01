@@ -27,6 +27,7 @@ func _remove_tiles() -> void:
 	for t in _selected_tiles:
 		t.remove_on_success()
 	_pairs_made += 1
+	SignalBus.on_pair_made.emit(_pairs_made)
 	AudioManager.play_sound(sound, AudioManager.SOUND_SUCCESS)
 
 func _selections_are_pairs() -> bool:
@@ -44,6 +45,7 @@ func _check_pair_made(tile: MemoryTile) -> void:
 
 	SignalBus.on_select_disabled.emit()
 	_moves += 1
+	SignalBus.on_move_made.emit(_moves)
 	_update_selections()
 
 func _on_tile_selected(tile: MemoryTile) -> void:
